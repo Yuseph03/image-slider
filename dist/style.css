@@ -1,0 +1,18 @@
+:root {
+    --primary-size: 25em;
+    --primary-position: 30%;
+}
+
+.html {
+    position: relative;
+}
+
+.container {
+    background-color: rgb(176, 174, 172);
+    width: var(--primary-size);
+    height: var(--primary-size);
+    position: absolute;
+    top: var(--primary-position);
+    left: var(--primary-position);
+    border-radius: 10px;
+}
