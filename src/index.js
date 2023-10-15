@@ -1,3 +1,3 @@
-import Slider from "./modules/Slider";
+import Slider from './modules/Slider';
 
 document.addEventListener('DOMContentLoaded', Slider.loadHomePage);
