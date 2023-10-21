@@ -5,8 +5,9 @@ export default class Slider {
 
   static loadHomePage() {
     document.querySelector('.dot').classList.add('active');
-    Slider.autoSlide();
+    Slider.startAutoSlide();
     Slider.initArrows();
+    Slider.initDots();
   }
 
   static returnImage(num) {
@@ -17,7 +18,7 @@ export default class Slider {
     return images[num];
   }
 
-  static autoSlide() {
+  static startAutoSlide() {
     let counter = Slider.returnSlide();
     if (!Slider.nIntervId) {
       Slider.nIntervId = setInterval(() => {
@@ -39,15 +40,8 @@ export default class Slider {
 
   static slideImage(count) {
     const img = document.querySelector('.image');
-    const dots = Array.from(document.querySelectorAll('.dot'));
     img.setAttribute('src', Slider.returnImage(count));
-    dots.forEach((dot) => {
-      if (dot.dataset.pos == count) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
+    Slider.updateDotColor(count);
   }
 
   static slideManual(direction) {
@@ -66,7 +60,27 @@ export default class Slider {
         Slider.slideImage(currentSlideNum - 1);
       }
     }
-    Slider.autoSlide();
+    Slider.startAutoSlide();
+  }
+
+  static dotClick(dot) {
+    Slider.stopAutoSlide();
+    const img = document.querySelector('.image');
+    const chosenDot = dot.dataset.pos;
+    img.setAttribute('src', Slider.returnImage(chosenDot));
+    Slider.updateDotColor(chosenDot);
+    Slider.startAutoSlide();
+  }
+
+  static updateDotColor(chosenDot) {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((element) => {
+      if (element.dataset.pos == chosenDot) {
+        element.classList.add('active');
+      } else {
+        element.classList.remove('active');
+      }
+    });
   }
 
   static initArrows() {
@@ -75,6 +89,11 @@ export default class Slider {
 
     leftArrow.addEventListener('click', () => Slider.slideManual('left'));
     rightArrow.addEventListener('click', () => Slider.slideManual('right'));
+  }
+
+  static initDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot) => dot.addEventListener('click', () => Slider.dotClick(dot)));
   }
 
   static returnSlide() {
