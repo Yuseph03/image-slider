@@ -1,0 +1,64 @@
+:root {
+    --primary-size: 25em;
+    --primary-position: 30%;
+}
+
+.html {
+    position: relative;
+}
+
+.container {
+    position: relative;
+    background-color: rgb(176, 174, 172);
+    width: var(--primary-size);
+    height: var(--primary-size);
+    position: absolute;
+    top: var(--primary-position);
+    left: var(--primary-position);
+    border-radius: 10px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dot-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: absolute;
+    gap: 10px;
+    bottom: -20px;
+    left: 38%;
+}
+
+.dot-container .dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.dot.active {
+    border-radius: 50%;
+    background-color: black;
+}
+
+.arrow-left {
+    position: absolute;
+    bottom: 50%;
+    left: -20px;
+}
+
+.arrow-right {
+    position: absolute;
+    bottom: 50%;
+    right: -20px;
+}
+
+.arrow-left,
+.arrow-right:hover,
+.dot {
+    cursor: pointer;
+}
