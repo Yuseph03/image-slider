@@ -6,18 +6,23 @@
     <title>image-slider</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="./style.css">
+    <script
+      src="https://kit.fontawesome.com/4c536a6bd5.js"
+      crossorigin="anonymous"
+    ></script>
 </head>
 <body>
-    <!-- <div id="embedImg" data-unicorns='"image1":"./image/kudoimg1.jpeg","image2":"./image/kudoimg2.jpg","image3":"./image/kudoimg3.jpeg","image4":"./image/kudoimg4.jpeg"'class="hidden"> -->
     </div>
     <div class="container">
-        <img class="image" src="" alt="">
-        <div class="dot-container">
+        <img class="image" src="./images/0.jpeg" alt="">
+        <div class="dot-container" aria-hidden="true">
+            <div class="dot" data-pos="0"></div>
             <div class="dot" data-pos="1"></div>
             <div class="dot" data-pos="2"></div>
             <div class="dot" data-pos="3"></div>
-            <div class="dot" data-pos="4"></div>
         </div>
+        <div class="arrow-left"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+        <div class="arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
     </div>
 </body>
 </html>
